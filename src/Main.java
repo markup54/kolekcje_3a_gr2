@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,6 +21,24 @@ public class Main {
         //HashSet zbiory - kolekcja, elementy się nie powtarzają, nie sa indeksowane, nieuporządkowane
         HashSet<Integer> liczbyWylosowane = losujLiczbyBezPowtorzenDoZbioru(30);
         wypisz(liczbyWylosowane);
+
+        //metoda do wczytywania listy elementow z klawiatury
+        ArrayList<Integer>wczytane =wczytajLiczbyZKlawiatury(5);
+
+        //wypisz wczytane elementy
+        wypisz(wczytane);
+    }
+
+    static ArrayList<Integer> wczytajLiczbyZKlawiatury(int ileLiczb){
+        ArrayList<Integer> wczytaneLiczby = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < ileLiczb; i++) {
+            System.out.println("Podaj liczbę nr "+(i+1));
+            int liczba = scanner.nextInt();
+            wczytaneLiczby.add(liczba);
+        }
+
+        return wczytaneLiczby;
     }
 
 
@@ -71,7 +87,6 @@ public class Main {
         for (int element:lista) {
             System.out.print(element+", ");
         }
-
     }
 
     static int[] wylosujLiczbyDoTablicy(int ileLiczb)
