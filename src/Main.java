@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 
 public class Main {
@@ -18,8 +19,21 @@ public class Main {
         //w trakcie dzialania programu moze sie zmieniac rozmiar kolekcji
         //wypisywanie listy
         wypisz(wylosowaneLiczbyLista);
+        //wylosuj 30 liczb bez powtorzen ->zbiory
+        //HashSet zbiory - kolekcja, elementy się nie powtarzają, nie sa indeksowane, nieuporządkowane
+        HashSet<Integer> liczbyWylosowane = losujLiczbyBezPowtorzenDoZbioru(30);
+        wypisz(liczbyWylosowane);
     }
 
+
+    static HashSet<Integer> losujLiczbyBezPowtorzenDoZbioru(int ileLiczb){
+        HashSet<Integer> wylosowaneLiczby = new HashSet<>();
+        Random random = new Random();
+        while (wylosowaneLiczby.size()<ileLiczb){
+            wylosowaneLiczby.add(random.nextInt(100)+1);
+        }
+        return wylosowaneLiczby;
+    }
     static ArrayList<Integer> losujLiczbyBezPowtorzen(int ileLiczb){
         Random random = new Random();
         ArrayList<Integer> wylosowaneLiczby = new ArrayList<>();
@@ -47,6 +61,17 @@ public class Main {
         for (int element:lista) {
             System.out.print(element+", ");
         }
+        System.out.println("Wypisywanie 2 sposobem");
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(lista.get(i));
+        }
+    }
+    static void wypisz(HashSet<Integer> lista){
+        System.out.println("Lista: ");
+        for (int element:lista) {
+            System.out.print(element+", ");
+        }
+
     }
 
     static int[] wylosujLiczbyDoTablicy(int ileLiczb)
